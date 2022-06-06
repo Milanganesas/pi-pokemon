@@ -10,6 +10,9 @@ module.exports = (sequelize) => {
     id: {
       type: INTEGER,
       primaryKey: true,
-    }
+      autoIncrement: true
+    }, 
+  }, {
+    timestamps: false,
   });
 };

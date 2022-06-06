@@ -7,18 +7,46 @@ module.exports = (sequelize) => {
     nombre: {
       type: STRING,
       allowNull: false,
+      set(value) {
+        this.setDataValue('nombre', value.toUpperCase())
+      }
     },
     id: {
       type: UUID,
       defaultValue: UUIDV4,
-      allowNull: false,
       primaryKey: true,
     },
-    Vida: { type: INTEGER },
-    Ataque: { type: INTEGER },
-    Defensa: { type: INTEGER },
-    Velocidad: { type: INTEGER },
-    Altura: { type: INTEGER },
-    Peso: { type: INTEGER }
+    vida: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    },
+    ataque: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    },
+    defensa: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    },
+    velocidad: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    },
+    altura: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    },
+    peso: { type: INTEGER, 
+      validate: {
+        min: 0,
+        max: 100 }
+    }
+  }, {
+    timestamps: false,
   });
 };
