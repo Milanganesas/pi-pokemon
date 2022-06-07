@@ -55,30 +55,17 @@ router.get('/pokemons/:id', async (req, res) => {
             })
         }
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send('No maestro no existe ese ID en ningun lado!');
     }
 })
 
 router.get('/pokemons', async (req, res) => {
-    try {
     const pokeNombre = req.query.name
-    if(!pokeNombre){
-        let pokemones = [];
-        for(let i = 1; i <= 40; i++) {
-            pokemones.push(fetch (`https://pokeapi.co/api/v2/pokemon/${i}`)) 
-        };
-        Promise.all(pokemones)
-        .then((pokeinfo) => Promise.all(pokeinfo.map(pi => pi.json())))
-        .then(pokedatos => {
-            let pokeapi = pokedatos.map(pd => {return {
-                nombre: pd.name, 
-                imagen: pd.sprites.other["official-artwork"].front_default, 
-                tipos: pd.types.map((tipo) => tipo.type.name)}
-            });
-            res.status(200).send(pokeapi);
-        });
-    } else {
-        const pokeBusqueda = await fetch (`https://pokeapi.co/api/v2/pokemon/${pokeNombre}`)
+    try {
+    if(pokeNombre){
+        let pokeDatos = await Pokemon.findOne({ where: { nombre: pokeNombre.toUpperCase() }, include: Type});
+        if(!pokeDatos) {
+            const pokeBusqueda = await fetch (`https://pokeapi.co/api/v2/pokemon/${pokeNombre.toLowerCase()}`)
             .then((pokemon) => pokemon.json())
             .then((pokedatos) => {return {
                 nombre: pokedatos.name,
@@ -93,9 +80,38 @@ router.get('/pokemons', async (req, res) => {
                 }
             })
             res.status(200).send(pokeBusqueda);
+        } else {
+            const pokeTipo = pokeDatos.types.map((tipo) => tipo.nombre)
+            const {nombre, vida, ataque, defensa, velocidad, altura, peso} = pokeDatos;
+            res.status(200).send({
+                nombre,
+                vida,
+                ataque,
+                defensa,
+                velocidad,
+                altura,
+                peso,
+                pokeTipo
+            })
+        }
+    } else {
+        let pokemones = [];
+        for(let i = 1; i <= 40; i++) {
+            pokemones.push(fetch (`https://pokeapi.co/api/v2/pokemon/${i}`)) 
+        };
+        Promise.all(pokemones)
+        .then((pokeinfo) => Promise.all(pokeinfo.map(pi => pi.json())))
+        .then(pokedatos => {
+            let pokeapi = pokedatos.map(pd => {return {
+                nombre: pd.name, 
+                imagen: pd.sprites.other["official-artwork"].front_default, 
+                tipos: pd.types.map((tipo) => tipo.type.name)}
+            });
+            res.status(200).send(pokeapi);
+        });
     }
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send('El nombre no esta en ningun lado amigo.');
     }
 });
 
