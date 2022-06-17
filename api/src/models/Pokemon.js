@@ -45,7 +45,8 @@ module.exports = (sequelize) => {
       validate: {
         min: 0,
         max: 100 }
-    }
+    },
+    imagen: { type: STRING }
   }, {
     timestamps: false,
   });
