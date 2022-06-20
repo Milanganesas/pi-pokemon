@@ -5,6 +5,8 @@ import css from './index.module.css'
 import NavBar from '../../components/navBar'
 import Pokecarta from '../pokeCard';
 import Cargando from '../../imagenes/loading2.gif'
+import { ordenar } from '../../components/filtros/components/ordenar.jsx';
+import Pokeorden from '../../components/filtros/';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -18,6 +20,8 @@ const Home = () => {
     }, []);
 
     const pokemons = useSelector((store) => store.pokemons);
+
+    const poketipos = useSelector((store) => store.tipos)
     
     const [actual, setActual] = useState(0);
 
@@ -25,18 +29,32 @@ const Home = () => {
 
     const [paginas, setPaginas] = useState(1)
 
-    const filtrar = pokemons.filter((poke) => poke.nombre.includes(buscar))
+    const [ordenados, setOrdenados] = useState([])
+
+    const [filtro, setFiltro] = useState("")
+
+    const [ubicacion, setUbicacion] = useState("")
+
+    const filtrar = pokemons.filter((poke) => poke.nombre.toLowerCase().includes(buscar))
 
     const porPagina = () => {
-        if(buscar.length === 0) {
-            return pokemons.slice(actual, actual + 12);
+        if(!buscar) {
+            return pokemons
         } else {
-            return filtrar.slice(actual, actual + 12);
+            return filtrar
         }
     };
 
+    const listo = ordenar(porPagina(), ordenados)
+    .filter(pokemon => ubicacion === "PREDEFINIDO" ? pokemon.nombre :
+    ubicacion === "string" ? typeof pokemon.id === "string" : 
+    ubicacion === "number" ? typeof pokemon.id === "number" : pokemon.nombre)
+    .filter(pokemon => !filtro ? pokemon.nombre :
+    typeof pokemon.id === "number" ? pokemon.tipos.includes(filtro) : 
+    pokemon.tipos.map(tipo => tipo.nombre).includes(filtro))
+
     const siguiente = () => {
-        if(filtrar.length > actual + 12) {
+        if(listo.length > actual + 12) {
             setActual(actual + 12)
             setPaginas(paginas + 1)
         }
@@ -65,17 +83,21 @@ const Home = () => {
                 <input type="text" placeholder="Pokebusqueda" onChange={busqueda} ></input>
             </div>
             <div>
+                <Pokeorden setOrdenados={setOrdenados} tipos={poketipos} setFiltro={setFiltro} setUbicacion={setUbicacion} setActual={setActual} setPaginas={setPaginas}/>
+            </div>
+            <div>
                 <button onClick={anterior}>Anterior</button>
                 <p>{
                     filtrar.length < 1 && buscar ? 0 : paginas
                 } de {
-                    filtrar.length < 1 && buscar ? 0 : 
-                    filtrar.length < 1 ? Math.ceil(pokemons.length / 12) : Math.ceil(filtrar.length / 12)
+                    porPagina().length < 1 && buscar ? 0 : 
+                    Math.ceil(listo.length / 12)
                 }</p>
                 <button onClick={siguiente}>Siguiente</button>
             </div>
             <div>
-                {pokemons.length === 0 ? <img src={Cargando} alt='Esperame'/> : porPagina()
+                {pokemons.length === 0 || poketipos.length === 0 ? <img src={Cargando} alt='Esperame'/> : listo
+                .slice(actual, actual + 12)
                 .map((pokemon) => {
                    return ( 
                         <Pokecarta

@@ -19,22 +19,22 @@ module.exports = (sequelize) => {
     vida: { type: INTEGER, 
       validate: {
         min: 0,
-        max: 100 }
+        max: 300 }
     },
     ataque: { type: INTEGER, 
       validate: {
         min: 0,
-        max: 100 }
+        max: 200 }
     },
     defensa: { type: INTEGER, 
       validate: {
         min: 0,
-        max: 100 }
+        max: 300 }
     },
     velocidad: { type: INTEGER, 
       validate: {
         min: 0,
-        max: 100 }
+        max: 300 }
     },
     altura: { type: INTEGER, 
       validate: {
@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
     peso: { type: INTEGER, 
       validate: {
         min: 0,
-        max: 100 }
+        max: 1000 }
     },
     imagen: { type: STRING }
   }, {

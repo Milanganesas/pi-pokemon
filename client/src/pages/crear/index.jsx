@@ -75,22 +75,22 @@ const Crear = () => {
                     />
               
                     <label>Pokevida</label>
-                    <input type="range" placeholder="1-100" min={1} max={100} name={"vida"} value={input.vida}  
+                    <input type="range" placeholder="1-100" min={1} max={300} name={"vida"} value={input.vida}  
                         onChange={(e) => handleChange(e)}      
                     />
                 
                     <label>Pokeataque</label>
-                    <input type="range" placeholder="1-100" min={1} max={100} name={"ataque"} value={input.ataque}  
+                    <input type="range" placeholder="1-100" min={1} max={200} name={"ataque"} value={input.ataque}  
                         onChange={(e) => handleChange(e)}      
                     />
               
                     <label>Pokedefensa</label>
-                    <input type="range" placeholder="1-100" min={1} max={100} name={"defensa"} value={input.defensa}  
+                    <input type="range" placeholder="1-100" min={1} max={300} name={"defensa"} value={input.defensa}  
                         onChange={(e) => handleChange(e)}      
                     />
              
                     <label>Pokevelocidad</label>
-                    <input type="range" placeholder="1-100" min={1} max={100} name={"velocidad"} value={input.velocidad}  
+                    <input type="range" placeholder="1-100" min={1} max={300} name={"velocidad"} value={input.velocidad}  
                         onChange={(e) => handleChange(e)}      
                     />
         
@@ -100,7 +100,7 @@ const Crear = () => {
                     />
 
                     <label>Pokepeso</label>
-                    <input type="range" placeholder="1-100" min={1} max={100} name={"peso"} value={input.peso}  
+                    <input type="range" placeholder="1-100" min={1} max={1000} name={"peso"} value={input.peso}  
                         onChange={(e) => handleChange(e)} 
                     />
                 </div>
