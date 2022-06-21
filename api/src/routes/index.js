@@ -32,8 +32,23 @@ router.get('/', async (req, res) => {
 
 router.get('/pokemons/:id', async (req, res) => {
     try {
-        const id = req.params.id
-        if(id.length < 3) {
+        const { id } = req.params
+        if(id.length > 3) {
+            let pokeDatos = await Pokemon.findOne({ where: { id: id }, include: Tipo});
+            const pokeTipo = pokeDatos.tipos.map((tipo) => tipo.nombre)
+            const {nombre, vida, ataque, defensa, velocidad, altura, peso, imagen} = pokeDatos;
+            res.status(200).send({
+                nombre,
+                vida,
+                ataque,
+                defensa,
+                velocidad,
+                altura,
+                peso,
+                imagen,
+                pokeTipo
+            })
+        } else {
             const pokeID = await fetch (`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then((pokemon) => pokemon.json())
             .then((pokedatos) => {return {
@@ -49,20 +64,6 @@ router.get('/pokemons/:id', async (req, res) => {
                 }
             })
             res.status(200).send(pokeID);
-        } else {
-            let pokeDatos = await Pokemon.findOne({ where: { id: id }, include: Tipo});
-            const pokeTipo = pokeDatos.Tipos.map((tipo) => tipo.nombre)
-            const {nombre, vida, ataque, defensa, velocidad, altura, peso} = pokeDatos;
-            res.status(200).send({
-                nombre,
-                vida,
-                ataque,
-                defensa,
-                velocidad,
-                altura,
-                peso,
-                pokeTipo
-            })
         }
     } catch (error) {
         res.status(400).send('No maestro no existe ese ID en ningun lado!');
