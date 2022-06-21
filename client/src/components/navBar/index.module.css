@@ -1,0 +1,81 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    background-color: rgba(87, 87, 87, 0.384);
+    box-shadow: #000000 0 1px 5px;
+}
+
+.logo {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.link {
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #fff;
+    padding: 0 20px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 22px;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    text-shadow: -1px 1px 5px #3B4CCA,
+                1px 1px 5px #3B4CCA,
+                1px -1px 5px #3B4CCA,
+                -1px -1px 5px #3B4CCA;
+}
+
+.link:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 50%;
+    height: 2px;
+    background: #000000;
+    transition: .5s cubic-bezier(0.075, 0.082, 0.165, 1);
+}
+
+.link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 50%;
+    height: 2px;
+    background: #000000;
+    transition: .6s cubic-bezier(0.075, 0.082, 0.165, 1);
+}
+
+.link:hover {
+    color: rgb(255, 204, 0);
+}
+
+.link:hover::before {
+    right: 0;
+}
+
+.link:hover::after {
+    left: 0;
+}

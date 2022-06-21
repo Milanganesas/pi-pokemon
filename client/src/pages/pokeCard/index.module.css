@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: OCR A Std, monospace;
+}
+
+.container {
+    margin-top: 1%;
+    width: 350px;
+    border: 1px solid #000;
+    padding-bottom: 25px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.657);
+    border-radius: 10px;
+}
+
+.card {
+    width: 100%;
+    padding: 35px 20px;
+}
+
+.imagen {
+    display: block;
+    width: 200px;
+    max-height: 200px;
+ 
+    margin: auto;
+}
+
+.vida {
+    width: 90px;
+    background-color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 30px;
+    margin-left: auto;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.nombre {
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.caracteristicas {
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.estadisticas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.tipos {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.span {
+    margin-top: 20px;
+    padding: 1px 10px 1px 10px;
+    border-radius: 20px;
+}
+
+.boton {
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: rgb(254, 177, 34);
+    border: none;
+    border-bottom: 3px solid #2864b4;
+    color: white;
+    padding: 5px;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.boton:hover {
+    color: rgb(254, 177, 34);
+    background-color: white;
+    border-bottom-color: rgb(254, 177, 34);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+  }

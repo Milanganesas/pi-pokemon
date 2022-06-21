@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons, getAllTypes } from "../../redux/actions";
-import css from './index.module.css'
+import c from './index.module.css'
 import NavBar from '../../components/navBar'
 import Pokecarta from '../pokeCard';
 import Cargando from '../../imagenes/loading2.gif'
 import { ordenar } from '../../components/filtros/components/ordenar.jsx';
 import Pokeorden from '../../components/filtros/';
+import pokebuscar from '../../imagenes/pokesearch.png'
 
 const Home = () => {
     const dispatch = useDispatch();
 
     React.useEffect(() => {
         dispatch(getAllPokemons())
-    }, []);
-        
-    React.useEffect(() => {
         dispatch(getAllTypes())
     }, []);
 
@@ -75,28 +73,28 @@ const Home = () => {
 
     return (
         <div>
-            <NavBar/>
-            <div>
-                <h1>Pokemons</h1>
+            <div className={c.container}>
+                <NavBar/>
+                <div className={c.buscar}>
+                    <input className={c.input} type="text" placeholder="Pokebusqueda" onChange= {busqueda}/>
+                    <img className={c.imagen} src={pokebuscar} alt="Busqueda"/>
+                </div>
+                <div className={c.filtrado}>
+                    <Pokeorden setOrdenados={setOrdenados} tipos={poketipos} setFiltro={setFiltro} setUbicacion={setUbicacion} setActual={setActual} setPaginas={setPaginas}/>
+                </div>
+                <div className={c.paginado}>
+                    <button className={c.boton} onClick={anterior}>Anterior</button>
+                    <span className={c.texto}>{
+                        filtrar.length < 1 && buscar ? 0 : paginas
+                    } de {
+                        porPagina().length < 1 && buscar ? 0 : 
+                        Math.ceil(listo.length / 12)
+                    }</span>
+                    <button className={c.boton} onClick={siguiente}>Siguiente</button>
+                </div>
             </div>
-            <div>
-                <input type="text" placeholder="Pokebusqueda" onChange={busqueda} ></input>
-            </div>
-            <div>
-                <Pokeorden setOrdenados={setOrdenados} tipos={poketipos} setFiltro={setFiltro} setUbicacion={setUbicacion} setActual={setActual} setPaginas={setPaginas}/>
-            </div>
-            <div>
-                <button onClick={anterior}>Anterior</button>
-                <p>{
-                    filtrar.length < 1 && buscar ? 0 : paginas
-                } de {
-                    porPagina().length < 1 && buscar ? 0 : 
-                    Math.ceil(listo.length / 12)
-                }</p>
-                <button onClick={siguiente}>Siguiente</button>
-            </div>
-            <div>
-                {pokemons.length === 0 || poketipos.length === 0 ? <img src={Cargando} alt='Esperame'/> : listo
+            <div className={c.cartas}>
+                {pokemons.length === 0 || poketipos.length === 0 ? <img className={c.cargando} src={Cargando} alt='Esperame'/> : listo
                 .slice(actual, actual + 12)
                 .map((pokemon) => {
                    return ( 
@@ -104,6 +102,7 @@ const Home = () => {
                             key={pokemon.id}
                             id={pokemon.id}
                             nombre={pokemon.nombre}
+                            vida={pokemon.vida}
                             ataque={pokemon.ataque}
                             altura={pokemon.altura}
                             peso={pokemon.peso}
@@ -112,6 +111,18 @@ const Home = () => {
                         />
                     )
                 })}
+            </div> 
+            <div className={c.container}>
+                <div className={c.paginado}>
+                    <button className={c.boton} onClick={anterior}>Anterior</button>
+                    <span className={c.texto}>{
+                        filtrar.length < 1 && buscar ? 0 : paginas
+                    } de {
+                        porPagina().length < 1 && buscar ? 0 : 
+                        Math.ceil(listo.length / 12)
+                    }</span>
+                    <button className={c.boton} onClick={siguiente}>Siguiente</button>
+                </div>
             </div>
         </div>
     )

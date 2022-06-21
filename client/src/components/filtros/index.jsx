@@ -1,4 +1,5 @@
 import React from "react";
+import c from "./index.module.css"
 
 const Pokeorden = ({setOrdenados, tipos, setFiltro, setUbicacion, setActual, setPaginas}) => {
     
@@ -21,15 +22,15 @@ const Pokeorden = ({setOrdenados, tipos, setFiltro, setUbicacion, setActual, set
     }
 
     return (
-        <div>
-            <select onChange={pokeorden}>
+        <div className={c.container}>
+            <select className={c.select} onChange={pokeorden}>
                 <option value="PREDEFINIDO">Predefinido</option>
                 <option value="ASC">Nombre ASC</option>
                 <option value="DSC">Nombre DSC</option>
                 <option value="AASC">Ataque ASC</option>
                 <option value="ADSC">Ataque DSC</option>
             </select>
-            <select onChange={pokefiltro}>
+            <select className={c.select} onChange={pokefiltro}>
                 <option value={""}>Predefinido</option>
                 {tipos.map(tipo => {
                     return (
@@ -37,7 +38,7 @@ const Pokeorden = ({setOrdenados, tipos, setFiltro, setUbicacion, setActual, set
                     )
                     })}
             </select>
-            <select onChange={pokeubicacion}>
+            <select className={c.select} onChange={pokeubicacion}>
                 <option value="PREDEFINIDO">Predefinido</option>
                 <option value="string">Creados</option>
                 <option value="number">Existentes</option>
