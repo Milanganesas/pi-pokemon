@@ -10,25 +10,15 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/', async (req, res) => {
-    try {
-            let poketipos = await fetch ('https://pokeapi.co/api/v2/type/')
-            const pokeTipo = await poketipos.json()
-
-            const pokeFind = await Tipo.findOne({where: {nombre: "shadow"}});
-            
-            if(!pokeFind) {
-                pokeTipo.results.map((poketipo) => Tipo.create({ nombre: poketipo.name }));
-                res.status(200).send("Cargados jefe")
-            } else {
-                const pokeEncuentra = await Tipo.findAll({
-                    through: { attributes: [] },
-                    attributes: ["nombre", "id"]});
-                res.status(200).send(pokeEncuentra)
-            }
-    } catch (error) {
-        res.status(400).send(error)
+    const pokeDatos = await fetch('https://pokeapi.co/api/v2/type');
+    const pokeTipos = await pokeDatos.json();
+    for( pTipo of pokeTipos.results ) {
+        const existe = await Tipo.findOne({where: { nombre: pTipo.name }})
+        if(existe) return res.json(await Tipo.findAll())
+        await Tipo.create({ nombre: pTipo.name})
     }
-});
+    res.json(await Tipo.findAll());
+})
 
 router.get('/pokemons/:id', async (req, res) => {
     try {
@@ -109,7 +99,7 @@ router.get('/pokemons', async (req, res) => {
         }
     } else {
         let pokemones = [];
-        for(let i = 1; i <= 150; i++) {
+        for(let i = 1; i <= 200; i++) {
             pokemones.push(fetch (`https://pokeapi.co/api/v2/pokemon/${i}`)) 
         };
 
@@ -174,5 +164,3 @@ router.post('/pokemons', async (req, res) => {
 });
 
 module.exports = router;
-
-
