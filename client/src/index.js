@@ -7,7 +7,6 @@ import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-
 ReactDOM.render(
   <Provider store={store}>
     <Router>

@@ -1,0 +1,213 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.629);
+    border-radius: 10px;
+}
+
+.titulo {
+    font-size: 2rem;
+    text-align: center;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.222);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.478);
+    padding: 1px 10px;
+    border-radius: 25px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.nombre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1%;
+    font-size: 20px;
+    border: none;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #000000;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.672);
+    letter-spacing: 1px;
+    gap: 15px;
+}
+
+.estadisticas {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.botones {
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 75%;
+    margin-bottom: 1%;
+}
+
+.boton {
+    margin: 0 5px 0 5px;
+    border: none;
+    height: 40px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: rgb(254, 177, 34);
+    border: none;
+    border-bottom: 3px solid #2864b4;
+    color: white;
+    padding: 0px 10px;
+    margin-bottom: 1%;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.boton:hover {
+    transition: 0.5s;
+    color: rgb(254, 177, 34);
+    background-color: white;
+    border-bottom-color: rgb(254, 177, 34);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.seleccionados{
+    display: inline;
+}
+
+.tipos {
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.subir {
+    height: 40px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: rgb(254, 177, 34);
+    border: none;
+    border-bottom: 3px solid #2864b4;
+    color: white;
+    padding: 5px 50px;
+    margin-bottom: 1%;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.subir:hover {
+    transition: 0.5s;
+    color: rgb(254, 177, 34);
+    background-color: white;
+    border-bottom-color: rgb(254, 177, 34);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.input {
+    margin-top: 2%;
+    width: 100%;
+    padding: 2px 8px;
+    font-weight: 300;
+    background: transparent;
+    background-color: rgba(255, 255, 255, 0.285);
+    border-radius: 20px;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    color: #ffffff;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+::placeholder {
+    color: #ffffff85;
+}
+
+.borrar {
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: rgb(254, 177, 34);
+    border: none;
+    border-bottom: 3px solid #2864b4;
+    color: white;
+    padding: 0 5px;
+    margin-bottom: 5%;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.borrar:hover {
+    transition: 0.5s;
+    color: rgb(254, 177, 34);
+    background-color: white;
+    border-bottom-color: rgb(254, 177, 34);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+}
+
+.rango {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    font-weight: 400;
+}
+
+.barra {
+    -webkit-appearance: none;
+    background: rgb(255, 255, 255);
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+  }
+  .barra::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #2864b4;
+    cursor: pointer;
+    box-shadow: -407px 0 0 400px rgb(254, 177, 34);
+  }
+  
+.cambio {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.color {
+    color: #fff;
+}

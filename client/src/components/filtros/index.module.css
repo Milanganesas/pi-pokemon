@@ -1,12 +1,13 @@
 .container {
     display: flex;
-    margin: 15px;
-    gap: 50px;
+    margin: 15px 0 15px 0;
+    gap: 15px;
 }
 
 .select {
+  text-align: center;
     font-family: OCR A Std, monospace;
-    width: 100%;
+    width: 130px;
     height: 40px;
     font-size: 17px;
     font-weight: 600;
@@ -16,14 +17,13 @@
     border: none;
     border-bottom: 3px solid #2864b4;
     color: white;
-    padding: 8px;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-select:hover,
-select:focus {
+select:hover {
+  transition: 0.5s;
   color: #dcb430;
   background-color: white;
   border-bottom-color: #dcb430;

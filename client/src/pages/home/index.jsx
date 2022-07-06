@@ -73,8 +73,8 @@ const Home = () => {
 
     return (
         <div>
+            <NavBar/>
             <div className={c.container}>
-                <NavBar/>
                 <div className={c.buscar}>
                     <input className={c.input} type="text" placeholder="Pokebusqueda" onChange= {busqueda}/>
                     <img className={c.imagen} src={pokebuscar} alt="Busqueda"/>
@@ -85,7 +85,7 @@ const Home = () => {
                 <div className={c.paginado}>
                     <button className={c.boton} onClick={anterior}>Anterior</button>
                     <span className={c.texto}>{
-                        filtrar.length < 1 && buscar ? 0 : paginas
+                        filtrar.length < 1 && buscar ? 0 : listo.length < 1 ? 0 : paginas
                     } de {
                         porPagina().length < 1 && buscar ? 0 : 
                         Math.ceil(listo.length / 12)
@@ -94,7 +94,7 @@ const Home = () => {
                 </div>
             </div>
             <div className={c.cartas}>
-                {pokemons.length === 0 || poketipos.length === 0 ? <img className={c.cargando} src={Cargando} alt='Esperame'/> : listo
+                {pokemons.length === 0 || poketipos.length === 0 || listo.length === 0 ? <img className={c.cargando} src={Cargando} alt='Esperame'/> : listo
                 .slice(actual, actual + 12)
                 .map((pokemon) => {
                    return ( 
@@ -116,7 +116,7 @@ const Home = () => {
                 <div className={c.paginado}>
                     <button className={c.boton} onClick={anterior}>Anterior</button>
                     <span className={c.texto}>{
-                        filtrar.length < 1 && buscar ? 0 : paginas
+                        filtrar.length < 1 && buscar ? 0 : listo.length < 1 ? 0 : paginas
                     } de {
                         porPagina().length < 1 && buscar ? 0 : 
                         Math.ceil(listo.length / 12)

@@ -29,6 +29,14 @@ const Pokeorden = ({setOrdenados, tipos, setFiltro, setUbicacion, setActual, set
                 <option value="DSC">Nombre DSC</option>
                 <option value="AASC">Ataque ASC</option>
                 <option value="ADSC">Ataque DSC</option>
+                <option value="DASC">Defensa ASC</option>
+                <option value="DDSC">Defensa DSC</option>
+                <option value="VASC">Velocidad ASC</option>
+                <option value="VDSC">Velocidad DSC</option>
+                <option value="ALASC">Altura ASC</option>
+                <option value="ALDSC">Altura DSC</option>
+                <option value="PASC">Peso ASC</option>
+                <option value="PDSC">Peso DSC</option>
             </select>
             <select className={c.select} onChange={pokefiltro}>
                 <option value={""}>Predefinido</option>

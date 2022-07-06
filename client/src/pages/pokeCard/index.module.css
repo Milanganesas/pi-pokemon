@@ -6,12 +6,20 @@
 }
 
 .container {
-    margin-top: 1%;
     width: 350px;
-    border: 1px solid #000;
     padding-bottom: 25px;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.657);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.657);
     border-radius: 10px;
+}
+
+.container:hover{
+    transition: 0.5s;
+    transform: scale(105%);
+    
+}
+.container:hover .imagen{
+    transition: 0.5s;
+    transform: scale(115%);
 }
 
 .card {
@@ -21,10 +29,9 @@
 
 .imagen {
     display: block;
-    width: 200px;
     max-height: 200px;
- 
     margin: auto;
+    filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.657));
 }
 
 .vida {
@@ -35,7 +42,7 @@
     border-radius: 30px;
     margin-left: auto;
     font-weight: 600;
-    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
 }
 
 .nombre {
@@ -62,13 +69,14 @@
     justify-content: space-around;
     font-size: 18px;
     font-weight: 600;
-    text-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
+    color: #fff;
 }
 
 .span {
     margin-top: 20px;
     padding: 1px 10px 1px 10px;
     border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.545);
 }
 
 .boton {
@@ -87,6 +95,7 @@
 }
 
 .boton:hover {
+    transition: 0.5s;
     color: rgb(254, 177, 34);
     background-color: white;
     border-bottom-color: rgb(254, 177, 34);
